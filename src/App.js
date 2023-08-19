@@ -599,9 +599,9 @@ const options = {
 };
 
 const topLocations = [
-  { name: "Milano, Italy", value: "Milano/Italy" },
-  { name: "Paris, France", value: "Paris/France" },
-  { name: "Los Angeles, CA", value: "Los Angeles/California" },
+  { name: "Chennai, India", value: "Chennai/India" },
+  { name: "Bangalore, India", value: "Bangalore/India" },
+  { name: "Delhi, India", value: "Delhi/India" },
   // add more top locations as needed
 ];
 
@@ -997,17 +997,22 @@ const AITravelPlanner = () => {
                   color: "#666",
                 }}
               >
-                (e.g. car, train, bus, etc.)
+                (select multiple options)
               </p>
             </Label>
-            <Input
-              type="text"
+            <Select
               id="transportationType"
               name="transportationType"
+              multiple
               value={values.transportationType}
-              onChange={handleChange}
-              required
-            />
+              onChange={handleMultiSelectChange}
+            >
+              {options.transportationTypes.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </Select>
 
             <Label htmlFor="activityType">
               Activity Type
